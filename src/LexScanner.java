@@ -83,20 +83,6 @@ public class LexScanner {
             System.out.println(e);
             e.printStackTrace();
         }
-//        for (ArrayList<String> a : lexClass.rulesTable) {
-//            for (String s: a) {
-//                System.out.print(s + " ");
-//            }
-//            System.out.println();
-//        }
-//        for (String s : lexClass.startingState) {
-//            System.out.print(s + " ");
-//        }
-//        System.out.println();
-//        System.out.println(Pattern.matches("[(){};,//[//]]",","));
-//        System.out.println(lexClass.getIndexWordType("c"));
-//        System.out.println(lexClass.getIndexStartingState("0"));
-//        System.out.println(lexClass.getIndexEndingState("1"));
 
         //Read Input and Handle data
         try {
@@ -107,7 +93,6 @@ public class LexScanner {
             String s = "";
             String currentState = lexClass.rulesTable.get(0).get(0);
             while (inputScan.hasNext()) {
-                System.out.println("s: " + s + ", currentS: " + currentState);
                 String c = inputScan.next();
                 if (currentState.equals("_")) {
                     s = c;
@@ -118,7 +103,6 @@ public class LexScanner {
                 if ((lexClass.getIndexStartingState(currentState) != -1) && (lexClass.getIndexWordType(c) != -1)) {
                     nextState = lexClass.rulesTable.get(lexClass.getIndexStartingState(currentState)).get(lexClass.getIndexWordType(c));
                 }
-//                System.out.println(s + ", " + c);
                 if (nextState.equals("_")) {
                     if (lexClass.getIndexEndingState(currentState) != -1) {
                         if (lexClass.tokenResult.indexOf(s) == -1) lexClass.tokenResult.add(s);
@@ -126,7 +110,6 @@ public class LexScanner {
                         if (lexClass.tokenResult.indexOf("error '" + s + "'") == -1)
                             lexClass.tokenResult.add("error '" + s + "'");
                     }
-
                     s = c;
                     currentState = (lexClass.getIndexWordType(c) == -1) ? "_" : lexClass.rulesTable.get(0).get(lexClass.getIndexWordType(c));
                 } else {

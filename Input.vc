@@ -6,6 +6,12 @@ float exampleFunction(boolean var1, int var2) {
 	}
 }
 
+
+/* askjdaas
+dkjasda*/
+//asgdashd
+"asagdha sgdhas "
+
 int main() {
 	boolean b = true;
 	boolean c = !b;
